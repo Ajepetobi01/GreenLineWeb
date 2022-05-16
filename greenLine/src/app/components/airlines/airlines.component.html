@@ -1,0 +1,59 @@
+<div nz-row>
+    <h1>Browse All The Airlines</h1>
+    <div nz-col nzSpan="24">
+        <h2><u>Welcome to the GreenLine Passenger Targeting System dashboard.</u></h2>
+        <p>Please type the Airline IATA code.</p>
+        <div nz-row>
+            <div nz-col nzSpan="12">
+                <form nz-form [nzLayout]="'inline'" [formGroup]="AirlineForm">
+                    <nz-form-item style="width: 50%;">
+                        <nz-form-control>
+                            <input nz-input formControlName="code" placeholder="Enter IATA code">
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-control>
+                            <button nz-button nzType="primary" (click)="FilterData()">Enter</button>
+                        </nz-form-control>
+                    </nz-form-item>
+                </form>
+            </div>
+            <div nz-col nzSpan="12">
+                <form nz-form [nzLayout]="'inline'" [formGroup]="AirlineForm">
+                    <nz-form-item style="width: 50%;">
+                        <nz-form-control>
+                            <input type="file" nz-input formControlName="file" (change)="onFileChange($event)">
+                            <p>Please Upload Excel File</p>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-control>
+                            <button nz-button nzType="primary" [nzLoading]="loading" [disabled]="!AirlineForm.valid"
+                                (click)="SubmitFile()">Submit</button>
+                        </nz-form-control>
+                    </nz-form-item>
+                </form>
+            </div>
+        </div>
+        <p>… or select one from the list.</p>
+        <nz-spin [nzSpinning]="loadingData" nzTip="Loading">
+            <nz-table #basicTable nzSize="small" [nzData]="airlines" nzShowPagination="true" [nzPageSize]="6">
+                <thead>
+                    <tr>
+                        <th>Company Name</th>
+                        <th>IATA Code</th>
+                        <th>Country</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of basicTable.data">
+                        <td>{{x.company}}</td>
+                        <td>{{x.letterCode}}</td>
+                        <td>{{x.country}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </nz-spin>
+    </div>
+</div>

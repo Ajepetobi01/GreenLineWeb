@@ -1,0 +1,88 @@
+<div nz-row [nzGutter]="16" style="height: 100%;">
+    <div nz-col nzSpan="12" class="login-div">
+        <br><br>
+        <h1 style="color: white;">
+            Welcome to <br>
+            GreenLine PTS
+        </h1>
+        <br>
+        <br>
+        <p style="color: white;">To keep connect with us Please login
+            with your personal info</p>
+        <br>
+        <button nz-button nzGhost nzSize="large" class="login-form-button-2 login-form-margin" [nzType]="'default'"
+            (click)="signInPage()">SIGN
+            IN</button>
+    </div>
+    <div nz-col nzSpan="12" class="login-div1">
+        <div>
+            <br>
+            <h2>CREATE USER</h2>
+            <br><br>
+        </div>
+        <form style="margin-left: 24%;" nz-form [formGroup]="SignUpForm" class="login-form" (ngSubmit)="submitForm()">
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your first name!">
+                    <nz-input-group nzSize="large" nzPrefixIcon="user">
+                        <input type="text" nz-input formControlName="firstname" placeholder="Enter Your First Name" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your last name!">
+                    <nz-input-group nzSize="large" nzPrefixIcon="user">
+                        <input type="text" nz-input formControlName="lastname" placeholder="Enter Your Last Name" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your phone number!">
+                    <nz-input-group nzSize="large" nzPrefixIcon="number">
+                        <input type="text" nz-input formControlName="phonenumber"
+                            placeholder="Enter Your phone number" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your email!">
+                    <nz-input-group nzSize="large" nzPrefixIcon="mail">
+                        <input type="email" nz-input formControlName="email" placeholder="Enter Your Email Address" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control
+                    nzErrorTip="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters!">
+                    <nz-input-group nzSize="large" nzPrefixIcon="key" [nzAddOnAfter]="suffixIconButton">
+                        <input [type]="showPasswordOnPress ? 'text' : 'password'" nz-input formControlName="password"
+                            placeholder="Enter Your Password"
+                            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                    </nz-input-group>
+                    <ng-template #suffixIconButton>
+                        <i style="cursor: pointer;" *ngIf="showPasswordOnPress==false"
+                            (click)="showPasswordOnPress=true" nz-icon nzType="eye"></i>
+                        <i style="cursor: pointer;" *ngIf="showPasswordOnPress" (click)="showPasswordOnPress=false"
+                            nz-icon nzType="eye-invisible"></i>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+            <!-- <nz-form-item>
+                <nz-form-control nzErrorTip="Please select at least 1 role!">
+                    <nz-select style="text-align: left;" nzSize="large" [nzMaxTagCount]="3"
+                        [nzMaxTagPlaceholder]="tagPlaceHolder" nzMode="multiple" nzPlaceHolder="Please select a role"
+                        nzAllowClear formControlName="roles">
+                        <nz-option nzLabel="User" nzValue="user"></nz-option>
+                        <nz-option nzLabel="Admin" nzValue="admin"></nz-option>
+                        <nz-option nzLabel="Manager" nzValue="manager"></nz-option>
+                        <nz-option nzLabel="Employee" nzValue="employee"></nz-option>
+                    </nz-select>
+                    <ng-template #tagPlaceHolder let-selectedList>and {{ selectedList.length }} more selected
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item> -->
+            <button nz-button nzSize="large" [nzLoading]="isLoading"
+                class="login-form-button loginbtn login-form-margin" [nzType]="'primary'">SIGN
+                UP</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div nz-row>
+    <h1>Browse Passengers By Flight</h1>
+    <div nz-col nzSpan="24">
+        <p>Please type the passenger's seat number.</p>
+        <div nz-row>
+            <div nz-col nzSpan="12">
+                <form nz-form [nzLayout]="'inline'" [formGroup]="FlightForm">
+                    <nz-form-item style="width: 50%;">
+                        <nz-form-control>
+                            <input nz-input placeholder="Seat number" formControlName="code">
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-control>
+                            <button nz-button nzType="primary" (click)="FilterData()">Enter</button>
+                        </nz-form-control>
+                    </nz-form-item>
+                </form>
+            </div>
+            <div nz-col nzSpan="12">
+                <form nz-form [nzLayout]="'inline'" [formGroup]="FlightForm">
+                    <nz-form-item style="width: 50%;">
+                        <nz-form-control>
+                            <input type="file" nz-input formControlName="file" (change)="onFileChange($event)">
+                            <p>Please Upload Excel File</p>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-control>
+                            <button nz-button nzType="primary" [nzLoading]="loading" [disabled]="!FlightForm.valid"
+                                (click)="SubmitFile()">Submit</button>
+                        </nz-form-control>
+                    </nz-form-item>
+                </form>
+            </div>
+        </div>
+        <p>… or select passenger from the list.</p>
+        <nz-spin [nzSpinning]="loadingData" nzTip="Loading">
+            <nz-table #basicTable nzSize="small" [nzData]="flights" nzShowPagination="true" [nzPageSize]="6">
+                <thead>
+                    <tr>
+                        <th>Flight</th>
+                        <th>SEAT</th>
+                        <th>ForeName</th>
+                        <th>Family Name</th>
+                        <th>Passport No</th>
+                        <th>Country of issue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of basicTable.data">
+                        <td>{{x.flightName}}</td>
+                        <td>{{x.passengerSeat}}</td>
+                        <td>{{x.passengerForeName}}</td>
+                        <td>{{x.passengerSurname}}</td>
+                        <td>{{x.passportNumber}}</td>
+                        <td>{{x.countryOfIssue}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </nz-spin>
+    </div>
+</div>

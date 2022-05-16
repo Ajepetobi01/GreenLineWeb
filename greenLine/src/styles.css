@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+.loginbtn{
+    background-color: #5948DF;
+    border: none !important;
+    border-radius:20px;
+}
+.loginbtn:hover{
+    background-color: white;
+    color: #5948DF;
+    border: 1rem #5948DF;
+}

@@ -1,0 +1,76 @@
+<div nz-row [nzGutter]="16" style="height: 100%;">
+    <div nz-col nzSpan="12" class="login-div">
+        <br><br>
+        <h1 style="color: white;">
+            Welcome to <br>
+            GreenLine PTS
+        </h1>
+        <br>
+        <br>
+        <p style="color: white;">To keep connect with us Please Sign Up
+            with your personal info</p>
+        <br>
+        <button nz-button nzGhost nzSize="large" class="login-form-button-2 login-form-margin" [nzType]="'default'"
+            (click)="signUpPage()">SIGN
+            UP</button>
+    </div>
+    <div nz-col nzSpan="12" class="login-div1">
+        <div>
+            <br>
+            <img src="../../../assets/green line logo.png" width="200" height="200" alt="logo">
+            <br><br>
+        </div>
+        <form style="margin-left: 30%;" nz-form [formGroup]="LoginForm" class="login-form" (ngSubmit)="submitForm()">
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your email!">
+                    <nz-input-group nzSize="large" nzPrefixIcon="mail">
+                        <input nzSize="large" type="email" nz-input formControlName="email" placeholder="Email" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your Password!">
+                    <nz-input-group nzSize="large" nzPrefixIcon="key">
+                        <input nzSize="large" type="password" nz-input formControlName="password"
+                            placeholder="Password" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <div nz-row class="login-form-margin">
+                <div nz-col [nzSpan]="24">
+                    <a class="login-form-forgot" (click)="isVisible = true;">Forgot password</a>
+                </div>
+            </div>
+            <button nz-button nzSize="large" [nzLoading]="isLoading"
+                class="login-form-button loginbtn login-form-margin" [nzType]="'primary'">SIGN
+                IN</button>
+        </form>
+    </div>
+</div>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Reset Password" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+    nzOkText="Reset">
+
+    <ng-container *nzModalContent>
+        <nz-spin [nzSpinning]="loading" nzTip="Loading">
+            <form nz-form [formGroup]="resetForm">
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Please input your email!">
+                        <nz-input-group nzSize="large" nzPrefixIcon="mail">
+                            <input nzSize="large" type="email" nz-input formControlName="email" placeholder="Email" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Please input new Password!">
+                        <nz-input-group nzSize="large" nzPrefixIcon="key">
+                            <input nzSize="large" type="password" nz-input formControlName="password"
+                                placeholder="Password" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+
+            </form>
+        </nz-spin>
+    </ng-container>
+</nz-modal>

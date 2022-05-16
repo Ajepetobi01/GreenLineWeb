@@ -1,0 +1,64 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null" *ngIf="haveToken">
+    <div class="sidebar-logo">
+      <a href="/">
+        <img src="../assets/LOGO.png" style="width: fit-content;" alt="logo">
+        <h1 style="font-weight: 200;"><b style="font-weight: 600;">GREENLINE</b>&nbsp;SYSTEMS</h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu nzOpen nzTitle="Menu" nzIcon="menu">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <i class="fa-solid fa-house"></i> &nbsp;&nbsp; <a routerLink="/dashboard">Dashboard</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <i class="fa-solid fa-plane"></i> &nbsp;&nbsp;<a routerLink="/airlines">Airlines</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <i class="fa-solid fa-plane-departure"></i> &nbsp;&nbsp; <a routerLink="/airports">Airport</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <i class="fa-solid fa-paper-plane"></i> &nbsp;&nbsp; <a routerLink="/flights">Flights</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <i class="fa-solid fa-person-walking-luggage"></i> &nbsp;&nbsp; <a routerLink="/passengers">Passengers</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Account" nzIcon="user">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <i class="fa-solid fa-users"></i> &nbsp;&nbsp;<a>Users</a>
+          </li>
+          <li *ngIf="!haveToken" nz-menu-item nzMatchRouter>
+            <i class="fa-solid fa-power-off"></i> &nbsp;&nbsp;<a>Login</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <i class="fa-solid fa-power-off"></i> &nbsp;&nbsp;<a (click)="Logout()">Logout</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header *ngIf="haveToken">
+      <div nz-row class="app-header">
+        <div nz-col nzSpan="9">
+          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+          </span>
+        </div>
+        <div nz-col nzSpan="15">
+          <h1>GREENLINE SYSTEMS</h1>
+        </div>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

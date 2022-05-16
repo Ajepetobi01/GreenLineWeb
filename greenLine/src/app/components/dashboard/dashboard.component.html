@@ -1,0 +1,62 @@
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <h1>Dashboard</h1>
+        <h3><u> Welcome to the GreenLine Passenger Targeting System dashboard.</u></h3>
+        <nz-tabset nzType="card">
+            <nz-tab nzTitle="OVERVIEW">
+                <div nz-row>
+                    <div nz-col nzSpan="24">
+                        <div style="text-align:center" id="chart">
+
+                        </div>
+                    </div>
+                </div>
+            </nz-tab>
+            <nz-tab nzTitle="TERRORISM" (nzClick)="updatePieChart('terrorism')">
+                <div nz-row>
+                    <div nz-col nzSpan="24">
+                        <div style="text-align:center" id="pieChart">
+
+                        </div>
+                    </div>
+                </div>
+            </nz-tab>
+            <nz-tab nzTitle="NARCOTICS" (nzClick)="updatePieChart('narcotics')">
+                <div nz-row>
+                    <div nz-col nzSpan="24">
+                        <div style="text-align:center" id="pieChart">
+
+                        </div>
+                    </div>
+                </div>
+            </nz-tab>
+            <nz-tab nzTitle="SMUGGLING" (nzClick)="updatePieChart('smuggling')">
+                <div nz-row>
+                    <div nz-col nzSpan="24">
+                        <div style="text-align:center" id="pieChart">
+
+                        </div>
+                    </div>
+                </div>
+            </nz-tab>
+            <nz-tab nzTitle="ILLEGAL IMMIGRATION" (nzClick)="updatePieChart('illegal')">
+                <div nz-row>
+                    <div nz-col nzSpan="24">
+                        <div style="text-align:center" id="pieChart">
+
+                        </div>
+                    </div>
+                </div>
+            </nz-tab>
+            <nz-tab nzTitle="REVENUE" (nzClick)="updatePieChart('revenue')">
+                <div nz-row>
+                    <div nz-col nzSpan="24">
+                        <div style="text-align:center" id="pieChart">
+
+                        </div>
+                    </div>
+                </div>
+            </nz-tab>
+        </nz-tabset>
+    </div>
+</div>

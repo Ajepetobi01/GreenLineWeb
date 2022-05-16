@@ -1,0 +1,97 @@
+<div nz-row>
+    <h1>Search For Passengers</h1>
+    <div nz-col nzSpan="24">
+        <p>Please type the passenger's flight and seat number.</p>
+        <div nz-row>
+            <div nz-col nzSpan="24">
+                <form nz-form [nzLayout]="'inline'">
+                    <nz-form-item>
+                        <nz-form-control>
+                            <input nz-input placeholder="Flight number">
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-control>
+                            <input nz-input placeholder="Seat number">
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-control>
+                            <button nz-button nzType="primary">Enter</button>
+                        </nz-form-control>
+                    </nz-form-item>
+                </form>
+            </div>
+            <div nz-col nzSpan="12">
+                <p>… or search by passport number</p>
+                <form nz-form [nzLayout]="'inline'" [formGroup]="passengerForm">
+                    <nz-form-item style="width: 64%;">
+                        <nz-form-control>
+                            <input nz-input placeholder="Passport number" formControlName="passportNumber">
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-control>
+                            <button nz-button nzType="primary" (click)="FilterData()">Enter</button>
+                        </nz-form-control>
+                    </nz-form-item>
+                </form>
+            </div>
+            <div nz-col nzSpan="12">
+                <form nz-form [nzLayout]="'inline'" [formGroup]="passengerForm">
+                    <nz-form-item style="width: 50%;">
+                        <nz-form-control>
+                            <input type="file" nz-input formControlName="file" (change)="onFileChange($event)">
+                            <p>Please Upload Excel File</p>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-control>
+                            <button nz-button nzType="primary" [nzLoading]="loading" [disabled]="!passengerForm.valid"
+                                (click)="SubmitFile()">Submit</button>
+                        </nz-form-control>
+                    </nz-form-item>
+                </form>
+            </div>
+        </div>
+        <p>… or select passenger from the list.</p>
+        <nz-spin [nzSpinning]="loadingData" nzTip="Loading">
+            <nz-table #basicTable nzSize="small" [nzData]="passengers" nzShowPagination="true" [nzPageSize]="6">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Date Of Birth</th>
+                        <th>Address</th>
+                        <th>Gender</th>
+                        <th>Nationality</th>
+                        <th>Passport</th>
+                        <th>Terrorism</th>
+                        <th>Narcotics</th>
+                        <th>Smuggling</th>
+                        <th>Illegal Immigration</th>
+                        <th>Revenue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of basicTable.data">
+                        <td>{{x.firstName}}</td>
+                        <td>{{x.firstName}}</td>
+                        <td>{{x.passengerDob | date}}</td>
+                        <td>{{x.passengerAddress}}</td>
+                        <td>{{x.gender}}</td>
+                        <td>{{x.nationality}}</td>
+                        <td>{{x.passport}}</td>
+                        <td>{{x.terrorism}}</td>
+                        <td>{{x.narcotics}}</td>
+                        <td>{{x.smuggling}}</td>
+                        <td>{{x.illegalImmigration}}</td>
+                        <td>{{x.revenue}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </nz-spin>
+    </div>
+</div>
